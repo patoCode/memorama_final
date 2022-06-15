@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlMainContainer"
+    android:background="@color/btn_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -45,7 +46,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:background="@color/white"
             android:gravity="center"
             >
             <LinearLayout
@@ -127,6 +127,7 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_refresh"
                 android:tint="@color/white" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +136,7 @@
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/lato"
                 android:text="@string/powered"
-                android:textAlignment="textEnd"
+                android:textAlignment="center"
                 android:textColor="@color/text_color"
                 android:textSize="10dp"
                 android:textStyle="bold" />
