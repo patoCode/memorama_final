@@ -128,11 +128,12 @@
                 android:src="@drawable/ic_refresh"
                 android:tint="@color/white" />
 
+
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/btnReset"
-
                 android:layout_marginTop="50dp"
                 android:fontFamily="@font/lato"
                 android:text="@string/powered"
@@ -154,6 +155,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 >
+
+
                 <com.google.android.material.button.MaterialButtonToggleGroup
                     android:id="@+id/mbtLevel"
                     android:layout_width="wrap_content"
@@ -548,6 +551,17 @@
                 </TableLayout>
 
 
+                <Button
+                    android:id="@+id/backMenu"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/ic_back_cards"
+                    app:backgroundTint="#d3b27e" />
 
             </RelativeLayout>
         </LinearLayout>

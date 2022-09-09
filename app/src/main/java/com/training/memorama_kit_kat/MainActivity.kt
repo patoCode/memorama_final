@@ -3,6 +3,7 @@ package com.training.memorama_kit_kat
 import android.R.*
 import android.animation.AnimatorSet
 import android.app.AlertDialog
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Handler
@@ -51,12 +52,18 @@ class MainActivity : AppCompatActivity(){
     private var _baseImg :Int = 0
     private var _matchImg :Int = 0
     var _lockPanel:Boolean = false
+    var bgCards = "DEFAULT"
     /* DELAY */
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         super.onCreate(savedInstanceState)
+
+        if(!intent.extras!!.isEmpty){
+            bgCards = intent.getStringExtra("bg").toString()
+        }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding.mbtLevel!!.addOnButtonCheckedListener{ group, checkerId, isChecked ->
             if(isChecked){
@@ -64,7 +71,6 @@ class MainActivity : AppCompatActivity(){
                     R.id.btnEasy -> {
                         _level = 3
                         init()
-                        Log.d("JJ","LEVEL "+_level)
                     }
                     R.id.btnMedium -> {
                         _level = 2
@@ -89,7 +95,10 @@ class MainActivity : AppCompatActivity(){
     }
     fun actionButtons() {
        binding.btnReset.setOnClickListener(View.OnClickListener { init() })
-//        binding.btnPower.setOnClickListener(View.OnClickListener { finish() })
+        binding.backMenu?.setOnClickListener (View.OnClickListener{
+            val intent = Intent(this, LevelActivity::class.java)
+            startActivity(intent)
+        })
     }
     private fun _loadPanel(){
         _elementsList[0] = Card(binding.ib11, binding.ibF11!!, binding.easyFlipView0!!,0,0)
@@ -115,19 +124,29 @@ class MainActivity : AppCompatActivity(){
     }
     private fun _loadCardsImg(){
         _cardsImgs.clear()
-        _cardsImgs.addAll(
-            listOf(f01,
-                f02,
-                f03,
-                f04,
-                f05,
-                f06
-            )
+        Log.d("CLICK", bgCards)
+        var _list = listOf(f01,
+            f02,
+            f03,
+            f04,
+            f05,
+            f06
         )
+        when(bgCards){
+            "0" -> {
+                _list = listOf(c01,c02,c03,c04,c05,c06)
+            }
+            "1" -> {
+                _list = listOf(m01,m02,m03,m04,m05,m06)
+            }
+            "2" -> {
+            }
+        }
+
+        _cardsImgs.addAll(_list)
         _backgroundPanel  = R.drawable.fondo
     }
     private fun _shuffleCards(): ArrayList<Int> {
-        //Log.d("TEST","SUFFLE: "+ Arrays.toString(res.toArray()))
         val res: ArrayList<Int> = ArrayList<Int>()
         for (i in 0 until _qty)
             res.add(i % _qty / 2)

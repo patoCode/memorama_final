@@ -5,25 +5,27 @@
 
     <application
         android:allowBackup="true"
-        android:hardwareAccelerated="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/icon"
         android:largeHeap="true"
+        android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Memorama_kit_kat"
         tools:targetApi="31">
+        <activity
+            android:name=".LevelActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/Theme.Memorama_kit_kat"
             android:exported="true"
             android:screenOrientation="landscape"
-            >
+            android:theme="@style/Theme.Memorama_kit_kat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
